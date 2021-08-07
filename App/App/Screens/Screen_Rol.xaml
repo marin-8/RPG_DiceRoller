@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:App.Models"
+    x:Class="App.Screens.Screen_Rol"
+    
+    Title="Create/edit roll">
+
+    <StackLayout
+        Spacing="0"
+        Padding="0"
+        BackgroundColor="White">
+
+        <Frame
+            BackgroundColor="LightGray"
+            Padding="0">
+
+            <StackLayout
+                Spacing="0"
+                Padding="0"
+                Orientation="Horizontal">
+
+                <Label
+                    Text="Roll name"
+                    Padding="20,20,0,20"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"/>
+
+                <Entry
+                    x:Name="RollName_Entry"
+                    Text="{Binding Roll.Name}"
+                    Margin="20"
+                    Placeholder="Roll name"
+                    FontSize="20"
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    ClearButtonVisibility="WhileEditing"
+                    MaxLength="20"
+                    HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+
+        </Frame>
+
+        <StackLayout
+            Spacing="0"
+            Padding="20"
+            Orientation="Horizontal">
+
+            <Label
+                Text="Parts"
+                Padding="0, 0, 20, 0"
+                FontAttributes="Bold"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"/>
+
+            <Button
+                Text="+"
+                FontSize="30"
+                Padding="0"
+                TextColor="Black"
+                BackgroundColor="LimeGreen"
+                FontAttributes="Bold"
+                WidthRequest="48"
+                HeightRequest="48"
+                Clicked="NewPart_Clicked"/>
+
+        </StackLayout>
+
+        <ScrollView
+            Orientation="Vertical"
+            BackgroundColor="Transparent"
+            Padding="20, 0"
+            Margin="0"
+            VerticalOptions="StartAndExpand">
+
+            <StackLayout
+                Padding="0"
+                Margin="0">
+
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding Roll.DiceParts}"
+                    BackgroundColor="Transparent">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate x:DataType="models:Model_Roll_Part_Dice">
+
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,20">
+                                <Frame BackgroundColor="LightGray" Padding="10">
+
+                                    <StackLayout
+                                        Padding="0"
+                                        Margin="0">
+
+                                        <Label
+                                            FontSize="20"
+                                            Text="{Binding Name}"
+                                            TextColor="Black"
+                                            FontAttributes="Bold"/>
+
+                                        <StackLayout
+                                            Orientation="Horizontal">
+
+                                            <Label
+                                                FontSize="30"
+                                                Text="{Binding NumberOfDice}"
+                                                TextColor="Black"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="Center"/>
+
+                                            <Label
+                                                FontSize="20"
+                                                Text="  d  "
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"/>
+
+                                            <Label
+                                                FontSize="30"
+                                                Text="{Binding NumberOfDiceFaces}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"/>
+
+                                            <Button
+                                                Text="E"
+                                                FontSize="20"
+                                                Padding="0"
+                                                TextColor="Black"
+                                                BackgroundColor="Orange"
+                                                FontAttributes="Bold"
+                                                WidthRequest="48"
+                                                HeightRequest="48"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="Center"/>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Frame>
+                            </Frame>
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+                </StackLayout>
+
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding Roll.ConstantParts}"
+                    BackgroundColor="Transparent">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate x:DataType="models:Model_Roll_Part_Constant">
+
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,20">
+                                <Frame BackgroundColor="LightGray" Padding="10">
+
+                                    <StackLayout
+                                        Padding="0"
+                                        Margin="0">
+
+                                        <Label
+                                            FontSize="20"
+                                            Text="{Binding Name}"
+                                            TextColor="Black"
+                                            FontAttributes="Bold"/>
+
+                                        <StackLayout
+                                            Orientation="Horizontal">
+
+                                            <Label
+                                                FontSize="30"
+                                                TextColor="Black"
+                                                HorizontalOptions="EndAndExpand">
+
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Sign}" Value="true">
+                                                        <Setter Property="Text" Value="+" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Sign}" Value="false">
+                                                        <Setter Property="Text" Value="-" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+
+                                            </Label>
+
+                                            <Label
+                                                FontSize="30"
+                                                Text="{Binding Value}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"/>
+
+                                            <Button
+                                                Text="E"
+                                                FontSize="20"
+                                                Padding="0"
+                                                TextColor="Black"
+                                                BackgroundColor="Orange"
+                                                FontAttributes="Bold"
+                                                WidthRequest="48"
+                                                HeightRequest="48"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="Center"/>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Frame>
+                            </Frame>
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <BoxView BackgroundColor="Transparent" HeightRequest="20"/>
+
+        <Button
+            Text="Add"
+            IsVisible="{Binding Creating}"
+            FontSize="20"
+            Padding="0"
+            TextColor="Black"
+            BackgroundColor="LimeGreen"
+            FontAttributes="Bold"
+            HeightRequest="48"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand"
+            Clicked="Add_Clicked"/>
+
+    </StackLayout>
+
+</ContentPage>

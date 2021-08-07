@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:App.Models"
+    x:Class="App.Screens.Screen_ConstantPart"
+    
+    Title="Create/edit dice part">
+
+    <StackLayout
+        Spacing="0"
+        Padding="0"
+        BackgroundColor="White">
+
+        <Frame
+            BackgroundColor="LightGray"
+            Padding="0">
+
+            <StackLayout
+                Spacing="0"
+                Padding="0"
+                Orientation="Horizontal">
+
+                <Label
+                    Text="Dice part name"
+                    Padding="20,20,0,20"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"/>
+
+                <Entry
+                    Text="{Binding Current_ConstantPart.Name}"
+                    Margin="20"
+                    Placeholder="Dice part name"
+                    FontSize="20"
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    ClearButtonVisibility="WhileEditing"
+                    MaxLength="20"
+                    HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+
+        </Frame>
+
+        <StackLayout
+            Spacing="0"
+            Padding="0"
+            Orientation="Horizontal">
+
+            <Label
+                Text="Sign"
+                Padding="20,20,0,20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"/>
+
+            <Switch
+                IsToggled="{Binding Current_ConstantPart.Sign}"
+                Toggled="Switch_Toggled"/>
+
+            <Label
+                Text="(ON = +) (OFF = -)"
+                Padding="20,20,0,20"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center">
+                
+                <!--<Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Path=ConstantPart.Sign, Mode=OneWay}" Value="true">
+                        <Setter Property="Text" Value="Positive" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding Path=ConstantPart.Sign, Mode=OneWay}" Value="false">
+                        <Setter Property="Text" Value="Negative" />
+                    </DataTrigger>
+                </Label.Triggers>-->
+                
+            </Label>
+
+        </StackLayout>
+
+        <StackLayout
+            Spacing="0"
+            Padding="0"
+            Orientation="Horizontal">
+
+            <Label
+                Text="Value"
+                Padding="20,20,0,20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"/>
+
+            <Entry
+                Text="{Binding Current_ConstantPart.Value}"
+                Margin="20"
+                Placeholder="Roll name"
+                FontSize="20"
+                TextColor="Black"
+                BackgroundColor="White"
+                ClearButtonVisibility="WhileEditing"
+                MaxLength="20"
+                HorizontalOptions="FillAndExpand"/>
+
+        </StackLayout>
+
+        <Button
+            Text="Add"
+            IsVisible="{Binding Creating}"
+            FontSize="20"
+            Padding="0"
+            TextColor="Black"
+            BackgroundColor="LimeGreen"
+            FontAttributes="Bold"
+            HeightRequest="48"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand"
+            Clicked="Add_Clicked"/>
+
+    </StackLayout>
+
+</ContentPage>

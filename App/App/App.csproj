@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Screens\Screen_ConstantPart.xaml.cs">
+      <DependentUpon>Screen_ConstantPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Screens\Screen_DicePart.xaml.cs">
+      <DependentUpon>Screen_DicePart.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Screens\Screen_Rol.xaml.cs">
+      <DependentUpon>Screen_Rol.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Screens\Screen_Main.xaml.cs">
+      <DependentUpon>Screen_Main.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

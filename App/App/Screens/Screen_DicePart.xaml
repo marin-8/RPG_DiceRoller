@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:App.Models"
+    x:Class="App.Screens.Screen_DicePart"
+    
+    Title="Create/edit dice part">
+
+    <StackLayout
+        Spacing="0"
+        Padding="0"
+        BackgroundColor="White">
+
+        <Frame
+            BackgroundColor="LightGray"
+            Padding="0">
+
+            <StackLayout
+                Spacing="0"
+                Padding="0"
+                Orientation="Horizontal">
+
+                <Label
+                    Text="Dice part name"
+                    Padding="20,20,0,20"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"/>
+
+                <Entry
+                    Text="{Binding Current_DicePart.Name}"
+                    Margin="20"
+                    Placeholder="Dice part name"
+                    FontSize="20"
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    ClearButtonVisibility="WhileEditing"
+                    MaxLength="20"
+                    HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+
+        </Frame>
+
+        <Label
+                Text="Number of dice:"
+                Padding="20,20,20,20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalOptions="Start"/>
+
+        <StackLayout
+            Spacing="0"
+            Padding="0"
+            Orientation="Horizontal">
+
+            <Label
+                x:Name="Label_NumberOfDice"
+                Padding="20,20,20,20"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalOptions="EndAndExpand"
+                VerticalTextAlignment="Center"/>
+
+            <Stepper
+                x:Name="Stepper_NumberOfDice"
+                ValueChanged="Stepper_NumberOfDice_ValueChanged"
+                Minimum="1"
+                Maximum="15"
+                Increment="1"
+                HorizontalOptions="StartAndExpand"/>
+
+        </StackLayout>
+
+        <Label
+            Text="Number of dice faces:"
+            Padding="20,20,0,20"
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="20"
+            HorizontalOptions="StartAndExpand"
+            HorizontalTextAlignment="Start"
+            VerticalTextAlignment="Center"/>
+        
+        <StackLayout
+            Spacing="0"
+            Padding="0"
+            Orientation="Horizontal">
+
+            <Label
+                x:Name="Label_NumberOfDiceFaces"
+                Padding="0,20,20,20"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalOptions="EndAndExpand"
+                VerticalTextAlignment="Center"/>
+
+            <Stepper
+                Value="20"
+                x:Name="Stepper_NumberOfDiceFaces"
+                ValueChanged="Stepper_NumberOfDiceFaces_ValueChanged"
+                Minimum="2"
+                Maximum="20"
+                Increment="1"
+                HorizontalOptions="StartAndExpand"/>
+
+        </StackLayout>
+
+        <Button
+            Text="Add"
+            IsVisible="{Binding Creating}"
+            FontSize="20"
+            Padding="0"
+            TextColor="Black"
+            BackgroundColor="LimeGreen"
+            FontAttributes="Bold"
+            HeightRequest="48"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand"
+            Clicked="Add_Clicked"/>
+
+    </StackLayout>
+
+</ContentPage>
