@@ -19,7 +19,7 @@
             <Color x:Key="Light_MIN">#C0C0C0</Color>
             <Color x:Key="Light_MED">#E0E0E0</Color>
             <Color x:Key="Light_MAX">#FFFFFF</Color>
-            
+
         </ResourceDictionary>
     </Application.Resources>
     
