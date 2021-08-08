@@ -14,22 +14,17 @@ namespace App.Logic
 
 		public static Model_HistoryEntry Roll(Model_Roll Roll)
 		{
-			var rollName = Roll.Name;
-
 			var diceRolls = Generate_DiceRolls(Roll);
-
-			var finalResult = Calculate_FinalResult(Roll, diceRolls);
-			var individualResults = Calculate_IndividualResults(Roll, diceRolls);
 
 			return new
 			(
-				rollName,
-				finalResult,
-				individualResults
+				Roll.Name,
+				Calculate_FinalResult(Roll, diceRolls),
+				Calculate_IndividualResults(Roll, diceRolls)
 			);
 		}
 
-		private static List<int> Generate_DiceRolls(Model_Roll Roll)
+		private static ReadOnlyCollection<int> Generate_DiceRolls(Model_Roll Roll)
 		{
 			var diceRolls = new List<int>();
 
@@ -43,10 +38,10 @@ namespace App.Logic
 				diceRolls.Add(sum);
 			}
 
-			return diceRolls;
+			return new(diceRolls);
 		}
 
-		private static int Calculate_FinalResult(Model_Roll rol, List<int> diceRolls)
+		private static int Calculate_FinalResult(Model_Roll rol, ReadOnlyCollection<int> diceRolls)
 		{
 			return
 				diceRolls.Sum()
@@ -60,7 +55,7 @@ namespace App.Logic
 				});
 		}
 
-		private static ReadOnlyCollection<KeyValuePair<string, int>> Calculate_IndividualResults(Model_Roll rol, List<int> diceRolls)
+		private static ReadOnlyCollection<KeyValuePair<string, int>> Calculate_IndividualResults(Model_Roll rol, ReadOnlyCollection<int> diceRolls)
 		{
 			var retorno = new List<KeyValuePair<string, int>>();
 

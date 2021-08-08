@@ -57,7 +57,7 @@ namespace App.Screens
 			LastRoll = Logic_Rolling.Roll(rolTapped);
 		}
 
-		private async void EditRoll_Clicked(object sender, EventArgs e)
+		private async void RollOptions_Clicked(object sender, EventArgs e)
 		{
 			var ID_rolTapped = (GUID)((Button)sender).BindingContext;
 

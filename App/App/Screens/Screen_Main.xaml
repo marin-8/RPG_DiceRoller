@@ -269,7 +269,7 @@
                                             HorizontalOptions="EndAndExpand"
                                             VerticalOptions="Center"
                                             BindingContext="{Binding ID}"
-                                            Clicked="EditRoll_Clicked"/>
+                                            Clicked="RollOptions_Clicked"/>
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
