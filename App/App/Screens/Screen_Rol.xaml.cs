@@ -1,16 +1,11 @@
 ﻿
 using System;
-using System.Text;
-using System.Linq;
-using System.ComponentModel;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
-using App.Models;
+using App.Enums;
 using App.GUIDs;
+using App.Models;
 
 using Xamarin.Forms;
-using App.Enums;
 
 namespace App.Screens
 {
@@ -72,6 +67,9 @@ namespace App.Screens
 					Enum_RollPartTypes.Dice.ToString(),
 					Enum_RollPartTypes.Constant.ToString()
 				);
+
+			if(partTypeString == "Cancel")
+				return;
 
 			var partType =
 				(Enum_RollPartTypes) Enum.Parse

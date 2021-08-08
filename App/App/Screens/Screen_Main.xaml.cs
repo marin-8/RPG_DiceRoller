@@ -1,15 +1,12 @@
 ﻿
 using System;
-using System.Text;
 using System.Linq;
-using System.ComponentModel;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-using App.Models;
-using App.Logic;
+using App.Enums;
 using App.GUIDs;
+using App.Logic;
+using App.Models;
 
 using Xamarin.Forms;
 
@@ -64,15 +61,56 @@ namespace App.Screens
 		{
 			var ID_rolTapped = (GUID)((Button)sender).BindingContext;
 
-			Model_Roll rolTapped;
+			var rollOptionString =
+				await DisplayActionSheet
+				(
+					"Roll options", "Cancel", null,
+					Enum_RollOptions.Edit.ToString(),
+					Enum_RollOptions.Delete.ToString()
+				);
 
-			lock(Global.Roles_Lock)
-				rolTapped =
-					Global.Roles
-					.Where(r => r.ID.Equals(ID_rolTapped))
-					.Single();
+			if(rollOptionString == "Cancel")
+				return;
 
-			await Navigation.PushAsync(new Screen_Rol(rolTapped));
+			var rollOption =
+				(Enum_RollOptions) Enum.Parse
+				(
+					typeof(Enum_RollOptions),
+					rollOptionString
+				);
+
+			switch(rollOption)
+			{
+				case Enum_RollOptions.Edit:
+				{
+					Model_Roll rolTapped;
+
+					lock(Global.Roles_Lock)
+						rolTapped =
+							Global.Roles
+							.Where(r => r.ID.Equals(ID_rolTapped))
+							.Single();
+
+					await Navigation.PushAsync(new Screen_Rol(rolTapped));
+
+					break;
+				}
+
+				case Enum_RollOptions.Delete:
+				{
+					if(await DisplayAlert ("Confirm deletion", "Are you sure you want to delete the roll?", "Yes", "No"))
+					{
+						lock(Global.Roles_Lock)
+							Global.Roles
+								.Remove(
+									Global.Roles
+										.Where(r => r.ID.Equals(ID_rolTapped))
+										.Single());
+					}
+
+					break;
+				}
+			}	
 		}
 	}
 }

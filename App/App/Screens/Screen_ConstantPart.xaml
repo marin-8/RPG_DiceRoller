@@ -32,7 +32,7 @@
                     VerticalTextAlignment="Center"/>
 
                 <Entry
-                    Text="{Binding Current_ConstantPart.Name}"
+                    Text="{Binding ConstantPart.Name}"
                     Margin="20"
                     Placeholder="Dice part name"
                     FontSize="20"
@@ -61,25 +61,24 @@
                 VerticalTextAlignment="Center"/>
 
             <Switch
-                IsToggled="{Binding Current_ConstantPart.Sign}"
-                Toggled="Switch_Toggled"/>
+                IsToggled="{Binding ConstantPart.Sign}"/>
 
             <Label
-                Text="(ON = +) (OFF = -)"
+                Text="{Binding ConstantPart.Sign}"
                 Padding="20,20,0,20"
                 TextColor="Black"
                 FontSize="20"
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="Center">
                 
-                <!--<Label.Triggers>
+                <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Path=ConstantPart.Sign, Mode=OneWay}" Value="true">
                         <Setter Property="Text" Value="Positive" />
                     </DataTrigger>
                     <DataTrigger TargetType="Label" Binding="{Binding Path=ConstantPart.Sign, Mode=OneWay}" Value="false">
                         <Setter Property="Text" Value="Negative" />
                     </DataTrigger>
-                </Label.Triggers>-->
+                </Label.Triggers>
                 
             </Label>
 
@@ -100,7 +99,7 @@
                 VerticalTextAlignment="Center"/>
 
             <Entry
-                Text="{Binding Current_ConstantPart.Value}"
+                Text="{Binding ConstantPart.Value}"
                 Margin="20"
                 Placeholder="Roll name"
                 FontSize="20"
