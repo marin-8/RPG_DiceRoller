@@ -56,24 +56,6 @@ namespace App.Screens
 				DicePart.ID = GUID.New_GUID();
 			
 			Creating = Origin_DicePart == null;
-
-			Stepper_NumberOfDice.Value = DicePart.NumberOfDice;
-			Label_NumberOfDice.Text = DicePart.NumberOfDice.ToString();
-
-			Stepper_NumberOfDiceFaces.Value = DicePart.NumberOfDiceFaces;
-			Label_NumberOfDiceFaces.Text = DicePart.NumberOfDiceFaces.ToString();
-		}
-
-		private void Stepper_NumberOfDice_ValueChanged(object sender, ValueChangedEventArgs e)
-		{
-			DicePart.NumberOfDice = (int)Stepper_NumberOfDice.Value;
-			Label_NumberOfDice.Text = DicePart.NumberOfDice.ToString();
-		}
-
-		private void Stepper_NumberOfDiceFaces_ValueChanged(object sender, ValueChangedEventArgs e)
-		{
-			DicePart.NumberOfDiceFaces = (int)Stepper_NumberOfDiceFaces.Value;
-			Label_NumberOfDiceFaces.Text = DicePart.NumberOfDiceFaces.ToString();
 		}
 
 		private async void Add_Clicked(object sender, EventArgs e)

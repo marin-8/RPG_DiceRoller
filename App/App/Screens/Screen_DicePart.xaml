@@ -60,7 +60,7 @@
             Orientation="Horizontal">
 
             <Label
-                x:Name="Label_NumberOfDice"
+                Text="{Binding DicePart.NumberOfDice}"
                 Padding="20,20,20,20"
                 TextColor="Black"
                 FontSize="20"
@@ -68,8 +68,7 @@
                 VerticalTextAlignment="Center"/>
 
             <Stepper
-                x:Name="Stepper_NumberOfDice"
-                ValueChanged="Stepper_NumberOfDice_ValueChanged"
+                Value="{Binding DicePart.NumberOfDice}"
                 Minimum="1"
                 Maximum="15"
                 Increment="1"
@@ -93,7 +92,7 @@
             Orientation="Horizontal">
 
             <Label
-                x:Name="Label_NumberOfDiceFaces"
+                Text="{Binding DicePart.NumberOfDiceFaces}"
                 Padding="0,20,20,20"
                 TextColor="Black"
                 FontSize="20"
@@ -101,9 +100,7 @@
                 VerticalTextAlignment="Center"/>
 
             <Stepper
-                Value="20"
-                x:Name="Stepper_NumberOfDiceFaces"
-                ValueChanged="Stepper_NumberOfDiceFaces_ValueChanged"
+                Value="{Binding DicePart.NumberOfDiceFaces}"
                 Minimum="2"
                 Maximum="20"
                 Increment="1"

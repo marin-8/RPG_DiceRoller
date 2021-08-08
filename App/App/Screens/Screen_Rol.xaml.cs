@@ -86,6 +86,8 @@ namespace App.Screens
 
 		private async void Add_Clicked(object sender, EventArgs e)
 		{
+			// TODO - Comprobar que hay al menos UNA parte
+
 			lock(Global.Roles_Lock)
 				Global.Roles.Add(Roll);
 
