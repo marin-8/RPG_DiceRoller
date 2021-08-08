@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Linq;
 
 using App.Enums;
 using App.GUIDs;
@@ -68,7 +69,7 @@ namespace App.Screens
 					Enum_RollPartTypes.Constant.ToString()
 				);
 
-			if(partTypeString == "Cancel")
+			if(partTypeString == null || partTypeString == "Cancel")
 				return;
 
 			var partType =
@@ -86,12 +87,117 @@ namespace App.Screens
 
 		private async void Add_Clicked(object sender, EventArgs e)
 		{
-			// TODO - Comprobar que hay al menos UNA parte
+			if(Roll.DiceParts.Count > 0 || Roll.ConstantParts.Count > 0)
+			{
+				lock(Global.Roles_Lock)
+					Global.Roles.Add(Roll);
 
-			lock(Global.Roles_Lock)
-				Global.Roles.Add(Roll);
+				await Navigation.PopAsync();
+			}
+			else
+			{
+				await DisplayAlert ("Warning", "Rolls must have at least one part", "OK");
+			}
+		}
 
-			await Navigation.PopAsync();
+		private async void DicePartOptions_Clicked(object sender, EventArgs e)
+		{
+			var ID_dicePartTapped = (GUID)((Button)sender).BindingContext;
+
+			var dicePartOptionString =
+				await DisplayActionSheet
+				(
+					"Dice part options", "Cancel", null,
+					Enum_ItemOptions.Edit.ToString(),
+					Enum_ItemOptions.Delete.ToString()
+				);
+
+			if(dicePartOptionString == null || dicePartOptionString == "Cancel")
+				return;
+
+			var dicePartOption =
+				(Enum_ItemOptions) Enum.Parse
+				(
+					typeof(Enum_ItemOptions),
+					dicePartOptionString
+				);
+
+			switch(dicePartOption)
+			{
+				case Enum_ItemOptions.Edit:
+				{
+					Model_Roll_Part_Dice dicePartTapped =
+						Roll.DiceParts
+						.Single(r => r.ID.Equals(ID_dicePartTapped));
+
+					await Navigation.PushAsync(new Screen_DicePart(Roll, dicePartTapped));
+
+					break;
+				}
+
+				case Enum_ItemOptions.Delete:
+				{
+					if(await DisplayAlert ("Confirm deletion", "Are you sure you want to delete the dice part?", "Yes", "No"))
+					{
+						Roll.DiceParts
+							.Remove(
+								Roll.DiceParts
+									.Single(r => r.ID.Equals(ID_dicePartTapped)));
+					}
+
+					break;
+				}
+			}
+		}
+
+		private async void ConstantPartOptions_Clicked(object sender, EventArgs e)
+		{
+			var ID_constantPartTapped = (GUID)((Button)sender).BindingContext;
+
+			var constantPartOptionString =
+				await DisplayActionSheet
+				(
+					"Constant part options", "Cancel", null,
+					Enum_ItemOptions.Edit.ToString(),
+					Enum_ItemOptions.Delete.ToString()
+				);
+
+			if(constantPartOptionString == null || constantPartOptionString == "Cancel")
+				return;
+
+			var constantPartOption =
+				(Enum_ItemOptions) Enum.Parse
+				(
+					typeof(Enum_ItemOptions),
+					constantPartOptionString
+				);
+
+			switch(constantPartOption)
+			{
+				case Enum_ItemOptions.Edit:
+				{
+					Model_Roll_Part_Constant constantPartTapped =
+						Roll.ConstantParts
+						.Single(r => r.ID.Equals(ID_constantPartTapped));
+
+					await Navigation.PushAsync(new Screen_ConstantPart(Roll, constantPartTapped));
+
+					break;
+				}
+
+				case Enum_ItemOptions.Delete:
+				{
+					if(await DisplayAlert ("Confirm deletion", "Are you sure you want to delete the constant part?", "Yes", "No"))
+					{
+						Roll.ConstantParts
+							.Remove(
+								Roll.ConstantParts
+									.Single(r => r.ID.Equals(ID_constantPartTapped)));
+					}
+
+					break;
+				}
+			}
 		}
 	}
 }

@@ -10,7 +10,9 @@ namespace App.Screens
 {
 	public partial class Screen_DicePart : ContentPage
 	{
+		#pragma warning disable IDE0044
 		private Model_Roll Origin_Roll;
+		#pragma warning restore IDE0044
 
 		private bool _Creating = true;
 		public bool Creating
@@ -24,7 +26,7 @@ namespace App.Screens
 			}
 		}
 
-		public Model_Roll_Part_Dice _DicePart = new
+		private Model_Roll_Part_Dice _DicePart = new
 		(
 			new(0),
 			"",
@@ -51,11 +53,15 @@ namespace App.Screens
 			this.Origin_Roll = Origin_Roll;
 
 			if(Origin_DicePart != null)
+			{
+				Creating = false;
 				DicePart = Origin_DicePart;
+			}
 			else
+			{
+				Creating = true;
 				DicePart.ID = GUID.New_GUID();
-			
-			Creating = Origin_DicePart == null;
+			}
 		}
 
 		private async void Add_Clicked(object sender, EventArgs e)

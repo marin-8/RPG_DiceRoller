@@ -65,38 +65,37 @@ namespace App.Screens
 				await DisplayActionSheet
 				(
 					"Roll options", "Cancel", null,
-					Enum_RollOptions.Edit.ToString(),
-					Enum_RollOptions.Delete.ToString()
+					Enum_ItemOptions.Edit.ToString(),
+					Enum_ItemOptions.Delete.ToString()
 				);
 
-			if(rollOptionString == "Cancel")
+			if(rollOptionString == null || rollOptionString == "Cancel")
 				return;
 
 			var rollOption =
-				(Enum_RollOptions) Enum.Parse
+				(Enum_ItemOptions) Enum.Parse
 				(
-					typeof(Enum_RollOptions),
+					typeof(Enum_ItemOptions),
 					rollOptionString
 				);
 
 			switch(rollOption)
 			{
-				case Enum_RollOptions.Edit:
+				case Enum_ItemOptions.Edit:
 				{
 					Model_Roll rolTapped;
 
 					lock(Global.Roles_Lock)
 						rolTapped =
 							Global.Roles
-							.Where(r => r.ID.Equals(ID_rolTapped))
-							.Single();
+							.Single(r => r.ID.Equals(ID_rolTapped));
 
 					await Navigation.PushAsync(new Screen_Rol(rolTapped));
 
 					break;
 				}
 
-				case Enum_RollOptions.Delete:
+				case Enum_ItemOptions.Delete:
 				{
 					if(await DisplayAlert ("Confirm deletion", "Are you sure you want to delete the roll?", "Yes", "No"))
 					{
@@ -104,8 +103,7 @@ namespace App.Screens
 							Global.Roles
 								.Remove(
 									Global.Roles
-										.Where(r => r.ID.Equals(ID_rolTapped))
-										.Single());
+										.Single(r => r.ID.Equals(ID_rolTapped)));
 					}
 
 					break;

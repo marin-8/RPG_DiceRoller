@@ -10,7 +10,9 @@ namespace App.Screens
 {
 	public partial class Screen_ConstantPart : ContentPage
 	{
+		#pragma warning disable IDE0044
 		private Model_Roll Origin_Roll;
+		#pragma warning restore IDE0044
 
 		private bool _Creating = true;
 		public bool Creating
@@ -24,12 +26,23 @@ namespace App.Screens
 			}
 		}
 
-		public Model_Roll_Part_Constant ConstantPart { get; set; } = new
+		private Model_Roll_Part_Constant _ConstantPart = new
 		(
 			"",
 			true,
 			2
 		);
+
+		public Model_Roll_Part_Constant ConstantPart
+		{
+			get => _ConstantPart;
+			set
+			{
+				if(value == _ConstantPart) return;
+				_ConstantPart = value;
+				OnPropertyChanged(nameof(ConstantPart));
+			}
+		}
 
 		public Screen_ConstantPart(Model_Roll Origin_Roll, Model_Roll_Part_Constant Origin_ConstantPart)
 		{
@@ -39,11 +52,15 @@ namespace App.Screens
 			this.Origin_Roll = Origin_Roll;
 
 			if(Origin_ConstantPart != null)
+			{
+				Creating = false;
 				ConstantPart = Origin_ConstantPart;
+			}
 			else
+			{
+				Creating = true;
 				ConstantPart.ID = GUID.New_GUID();
-			
-			Creating = Origin_ConstantPart == null;
+			}
 		}
 
 		private async void Add_Clicked(object sender, EventArgs e)

@@ -1,7 +1,7 @@
 ﻿
 namespace App.Enums
 {
-	public enum Enum_RollOptions : byte
+	public enum Enum_ItemOptions : byte
 	{
 		Edit,
 		Delete

@@ -140,7 +140,9 @@
                                                 WidthRequest="48"
                                                 HeightRequest="48"
                                                 HorizontalOptions="EndAndExpand"
-                                                VerticalOptions="Center"/>
+                                                VerticalOptions="Center"
+                                                BindingContext="{Binding ID}"
+                                                Clicked="DicePartOptions_Clicked"/>
 
                                         </StackLayout>
 
@@ -211,7 +213,9 @@
                                                 WidthRequest="48"
                                                 HeightRequest="48"
                                                 HorizontalOptions="EndAndExpand"
-                                                VerticalOptions="Center"/>
+                                                VerticalOptions="Center"
+                                                BindingContext="{Binding ID}"
+                                                Clicked="ConstantPartOptions_Clicked"/>
 
                                         </StackLayout>
 
