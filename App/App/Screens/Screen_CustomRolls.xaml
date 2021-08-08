@@ -4,38 +4,29 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:App.Models"
-    x:Class="App.Screens.Screen_Main"
+    x:Class="App.Screens.Screen_CustomRolls"
     
-    Title="Everybody dice">
+    Title="Custom rolls">
 
     <StackLayout
         Spacing="0"
         Padding="0"
-        BackgroundColor="White">
+        BackgroundColor="{StaticResource Medium_Medium}">
 
         <Frame
-            BackgroundColor="LightGray"
+            BackgroundColor="{StaticResource Medium_Dark}"
             Padding="0">
 
             <StackLayout
                 Spacing="0"
                 Padding="0">
 
-                <Label
-                    Text="Last roll"
-                    Padding="20,20,0,10"
-                    FontAttributes="Bold"
-                    TextColor="Black"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    VerticalTextAlignment="Center"/>
-
                 <Frame
                     BackgroundColor="Transparent"
-                    Padding="0,10,0,20">
+                    Padding="20">
                     
                     <Frame
-                        BackgroundColor="Gray"
+                        BackgroundColor="{StaticResource Dark_MED}"
                         Padding="20"
                         VerticalOptions="Center"
                         HorizontalOptions="Center">
@@ -50,7 +41,7 @@
                                 Text="{Binding LastRoll.RollName}"
                                 FontSize="20"
                                 Padding="0, 0, 0, 10"
-                                TextColor="Black"
+                                TextColor="{StaticResource Light_MAX}"
                                 FontAttributes="Bold"/>
 
                             <StackLayout
@@ -64,7 +55,7 @@
                                 Text="{Binding LastRoll.FinalResult}"
                                     Padding="0, 0, 10, 0"
                                     FontSize="40"
-                                    TextColor="Black"
+                                    TextColor="{StaticResource Light_MAX}"
                                     FontAttributes="Bold"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"/>
@@ -85,17 +76,17 @@
                                                 <Label
                                                     FontSize="20"
                                                     Text="{Binding Path=Key}"
-                                                    TextColor="Black"/>
+                                                    TextColor="{StaticResource Light_MAX}"/>
 
                                                 <Label
                                                     FontSize="20"
                                                     Text="="
-                                                    TextColor="Black"/>
+                                                    TextColor="{StaticResource Light_MAX}"/>
                                                 
                                                 <Label
                                                     FontSize="20"
                                                     Text="{Binding Path=Value}"
-                                                    TextColor="Black"/>
+                                                    TextColor="{StaticResource Light_MAX}"/>
 
                                             </StackLayout>
 
@@ -116,6 +107,10 @@
             </StackLayout>
 
         </Frame>
+
+        <BoxView
+            HeightRequest="5"
+            BackgroundColor="{StaticResource Dark_MED}"/>
 
         <StackLayout
             Spacing="0"
@@ -158,14 +153,29 @@
                 <DataTemplate x:DataType="models:Model_Roll">
                     <ViewCell>
 
-                        <Frame BackgroundColor="Transparent" Padding="0,0,0,20">
-                            <Frame BackgroundColor="LightGray" Padding="10">
-                                <StackLayout Spacing="0" Padding="0">
-                                    <Label FontSize="20" Text="{Binding Name}" TextColor="Black" FontAttributes="Bold"></Label>
-                                    <StackLayout Spacing="0" Padding="0">
-
-
-
+                        <Frame
+                            BackgroundColor="Transparent"
+                            Padding="0,0,0,20">
+                            
+                            <Frame
+                                BackgroundColor="{StaticResource Dark_MED}"
+                                Padding="20">
+                                
+                                <StackLayout
+                                    Spacing="0"
+                                    Padding="0">
+                                    
+                                    <Label
+                                        FontSize="20"
+                                        Padding="0,0,0,10"
+                                        Text="{Binding Name}"
+                                        TextColor="{StaticResource Light_MAX}"
+                                        FontAttributes="Bold"></Label>
+                                    
+                                    <StackLayout
+                                        Spacing="0"
+                                        Padding="0">
+                                        
                                         <StackLayout
                                             BindableLayout.ItemsSource="{Binding DiceParts}"
                                             BackgroundColor="Transparent">
@@ -180,27 +190,27 @@
                                                         <Label
                                                             FontSize="20"
                                                             Text="{Binding Name}"
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                         <Label
                                                             FontSize="20"
                                                             Text=" > "
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                         <Label
                                                             FontSize="20"
                                                             Text="{Binding NumberOfDice}"
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                         <Label
                                                             FontSize="20"
-                                                            Text="de"
-                                                            TextColor="Black"/>
+                                                            Text="d"
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                         <Label
                                                             FontSize="20"
                                                             Text="{Binding NumberOfDiceFaces}"
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                     </StackLayout>
 
@@ -224,16 +234,16 @@
                                                         <Label
                                                             FontSize="20"
                                                             Text="{Binding Name}"
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                         <Label
                                                             FontSize="20"
                                                             Text=" > "
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                         <Label
                                                             FontSize="20"
-                                                            TextColor="Black">
+                                                            TextColor="{StaticResource Light_MAX}">
                                                             <Label.Triggers>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding Sign}" Value="true">
                                                                     <Setter Property="Text" Value="+" />
@@ -247,7 +257,7 @@
                                                         <Label
                                                             FontSize="20"
                                                             Text="{Binding Value}"
-                                                            TextColor="Black"/>
+                                                            TextColor="{StaticResource Light_MAX}"/>
 
                                                     </StackLayout>
 

@@ -1,16 +1,18 @@
 ﻿
 using System.ComponentModel;
 
+using Newtonsoft.Json;
+
 using App.GUIDs;
 
 namespace App.Models
 {
 	public class Model_Roll_Part_Dice : INotifyPropertyChanged
 	{
-		public GUID ID { get; set; }
+		[JsonIgnore] public GUID ID { get; set; }
 
 		private string _Name;
-		public string Name
+		[JsonProperty("1")] public string Name
 		{
 			get => _Name;
 			set
@@ -22,7 +24,7 @@ namespace App.Models
 		}
 
 		private int _NumberOfDice;
-		public int NumberOfDice
+		[JsonProperty("2")] public int NumberOfDice
 		{
 			get => _NumberOfDice;
 			set
@@ -34,7 +36,7 @@ namespace App.Models
 		}
 
 		private int _NumberOfDiceFaces;
-		public int NumberOfDiceFaces
+		[JsonProperty("3")] public int NumberOfDiceFaces
 		{
 			get => _NumberOfDiceFaces;
 			set
@@ -45,6 +47,7 @@ namespace App.Models
 			}
 		}
 
+		[JsonConstructor]
 		public Model_Roll_Part_Dice(string Name, int NumberOfDice, int NumberOfDiceFaces)
 		{
 			ID = GUID.New_GUID();

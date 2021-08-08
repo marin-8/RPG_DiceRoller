@@ -12,16 +12,16 @@ using Xamarin.Forms;
 
 namespace App.Screens
 {
-	public partial class Screen_Main : ContentPage
+	public partial class Screen_CustomRolls : ContentPage
 	{
 		private Model_HistoryEntry _LastRoll = new
 		(
-			"Roll name",
+			"Last roll's name",
 			12,
 			new(new KeyValuePair<string, int>[]
 			{
-				new("Dice roll", 7),
-				new("Constant", 5),
+				new("Dice part", 7),
+				new("Constant part", 5),
 			})			
 		);
 
@@ -36,13 +36,13 @@ namespace App.Screens
 			}
 		}
 
-		public Screen_Main()
+		public Screen_CustomRolls()
 		{
 			InitializeComponent();
 			BindingContext = this;
 
-			lock(Global.Roles_Lock)
-				RollList.ItemsSource = Global.Roles;
+			lock(Global.Rolls_Lock)
+				RollList.ItemsSource = Global.Rolls;
 		}
 
 		private async void NewRoll_Clicked(object sender, EventArgs e)
@@ -85,9 +85,9 @@ namespace App.Screens
 				{
 					Model_Roll rolTapped;
 
-					lock(Global.Roles_Lock)
+					lock(Global.Rolls_Lock)
 						rolTapped =
-							Global.Roles
+							Global.Rolls
 							.Single(r => r.ID.Equals(ID_rolTapped));
 
 					await Navigation.PushAsync(new Screen_Rol(rolTapped));
@@ -99,10 +99,10 @@ namespace App.Screens
 				{
 					if(await DisplayAlert ("Confirm deletion", "Are you sure you want to delete the roll?", "Yes", "No"))
 					{
-						lock(Global.Roles_Lock)
-							Global.Roles
+						lock(Global.Rolls_Lock)
+							Global.Rolls
 								.Remove(
-									Global.Roles
+									Global.Rolls
 										.Single(r => r.ID.Equals(ID_rolTapped)));
 					}
 

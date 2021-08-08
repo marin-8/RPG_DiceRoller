@@ -1,8 +1,7 @@
 ﻿
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
+using App.Logic;
 using App.Screens;
 
 namespace App
@@ -13,15 +12,17 @@ namespace App
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new Screen_Main());
+			MainPage = new AppShell();
 		}
 
 		protected override void OnStart()
 		{
+			Logic_LoadSave.Load();
 		}
 
 		protected override void OnSleep()
 		{
+			Logic_LoadSave.Save();
 		}
 
 		protected override void OnResume()

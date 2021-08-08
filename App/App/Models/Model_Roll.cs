@@ -2,16 +2,18 @@
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
+using Newtonsoft.Json;
+
 using App.GUIDs;
 
 namespace App.Models
 {
 	public class Model_Roll : INotifyPropertyChanged
 	{
-		public GUID ID { get; set; }
+		[JsonIgnore] public GUID ID { get; set; }
 
 		private string _Name;
-		public string Name
+		[JsonProperty("1")] public string Name
 		{
 			get => _Name;
 			set
@@ -21,9 +23,10 @@ namespace App.Models
 				OnPropertyChanged(nameof(Name));
 			}
 		}
-		public ObservableCollection<Model_Roll_Part_Dice> DiceParts { get; set; }
-		public ObservableCollection<Model_Roll_Part_Constant> ConstantParts { get; set; }
+		[JsonProperty("2")] public ObservableCollection<Model_Roll_Part_Dice> DiceParts { get; set; }
+		[JsonProperty("3")] public ObservableCollection<Model_Roll_Part_Constant> ConstantParts { get; set; }
 
+		[JsonConstructor]
 		public Model_Roll(string Name, ObservableCollection<Model_Roll_Part_Dice> DiceParts, ObservableCollection<Model_Roll_Part_Constant> ConstantParts)
 		{
 			ID = GUID.New_GUID();

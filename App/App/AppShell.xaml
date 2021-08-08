@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:Screens="clr-namespace:App.Screens"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="Screens:AppShell"
+    x:Class="App.Screens.AppShell"
+    
+    Shell.BackgroundColor="{StaticResource Dark_MED}"
+    Shell.TabBarTitleColor="{StaticResource Light_MAX}"
+    Shell.TabBarUnselectedColor="{StaticResource Medium_Medium}">
+
+    <TabBar>
+
+        <ShellContent
+            Title="Basic"
+            ContentTemplate="{DataTemplate Screens:Screen_CustomRolls}" />
+
+
+        <ShellContent
+            Title="Advanced"
+            ContentTemplate="{DataTemplate Screens:Screen_CustomRolls}" />
+
+        <ShellContent
+            Title="Custom"
+            ContentTemplate="{DataTemplate Screens:Screen_CustomRolls}" />
+
+    </TabBar>
+    
+</Shell>
+    

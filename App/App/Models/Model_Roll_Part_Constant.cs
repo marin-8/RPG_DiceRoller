@@ -1,16 +1,18 @@
 ﻿
 using System.ComponentModel;
 
+using Newtonsoft.Json;
+
 using App.GUIDs;
 
 namespace App.Models
 {
 	public class Model_Roll_Part_Constant : INotifyPropertyChanged
 	{
-		public GUID ID { get; set; }
+		[JsonIgnore] public GUID ID { get; set; }
 		
 		private string _Name;
-		public string Name
+		[JsonProperty("1")] public string Name
 		{
 			get => _Name;
 			set
@@ -22,7 +24,7 @@ namespace App.Models
 		}
 
 		private bool _Sign;
-		public bool Sign
+		[JsonProperty("2")] public bool Sign
 		{
 			get => _Sign;
 			set
@@ -34,7 +36,7 @@ namespace App.Models
 		}
 
 		private int _Value;
-		public int Value
+		[JsonProperty("3")] public int Value
 		{
 			get => _Value;
 			set
@@ -45,6 +47,7 @@ namespace App.Models
 			}
 		}
 
+		[JsonConstructor]
 		public Model_Roll_Part_Constant(string Name, bool Sign, int Value)
 		{
 			ID = GUID.New_GUID();

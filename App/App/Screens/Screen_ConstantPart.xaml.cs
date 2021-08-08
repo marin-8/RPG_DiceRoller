@@ -2,6 +2,7 @@
 using System;
 
 using App.GUIDs;
+using App.Logic;
 using App.Models;
 
 using Xamarin.Forms;
@@ -61,6 +62,13 @@ namespace App.Screens
 				Creating = true;
 				ConstantPart.ID = GUID.New_GUID();
 			}
+		}
+
+		protected override void OnDisappearing()
+		{
+			Logic_LoadSave.Save();
+
+			base.OnDisappearing();
 		}
 
 		private async void Add_Clicked(object sender, EventArgs e)

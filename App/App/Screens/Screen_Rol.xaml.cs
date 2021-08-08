@@ -4,6 +4,7 @@ using System.Linq;
 
 using App.Enums;
 using App.GUIDs;
+using App.Logic;
 using App.Models;
 
 using Xamarin.Forms;
@@ -59,6 +60,13 @@ namespace App.Screens
 			}
 		}
 
+		protected override void OnDisappearing()
+		{
+			Logic_LoadSave.Save();
+
+			base.OnDisappearing();
+		}
+
 		private async void NewPart_Clicked(object sender, EventArgs e)
 		{
 			var partTypeString =
@@ -89,8 +97,8 @@ namespace App.Screens
 		{
 			if(Roll.DiceParts.Count > 0 || Roll.ConstantParts.Count > 0)
 			{
-				lock(Global.Roles_Lock)
-					Global.Roles.Add(Roll);
+				lock(Global.Rolls_Lock)
+					Global.Rolls.Add(Roll);
 
 				await Navigation.PopAsync();
 			}

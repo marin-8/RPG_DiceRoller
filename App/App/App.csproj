@@ -15,6 +15,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\FontIcons_Brands_Regular.otf" />
+    <None Remove="Resources\Fonts\FontIcons_Free_Regular.otf" />
+    <None Remove="Resources\Fonts\FontIcons_Free_Solid.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\FontIcons_Brands_Regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FontIcons_Free_Regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FontIcons_Free_Solid.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
@@ -29,8 +42,14 @@
     <Compile Update="Screens\Screen_Rol.xaml.cs">
       <DependentUpon>Screen_Rol.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Screens\Screen_Main.xaml.cs">
-      <DependentUpon>Screen_Main.xaml</DependentUpon>
+    <Compile Update="Screens\Screen_CustomRolls.xaml.cs">
+      <DependentUpon>Screen_CustomRolls.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="AppShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
