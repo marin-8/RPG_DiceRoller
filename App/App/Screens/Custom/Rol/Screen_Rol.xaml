@@ -11,10 +11,10 @@
     <StackLayout
         Spacing="0"
         Padding="0"
-        BackgroundColor="White">
+        BackgroundColor="{StaticResource Medium_Medium}">
 
         <Frame
-            BackgroundColor="LightGray"
+            BackgroundColor="{StaticResource Medium_Dark}"
             Padding="0">
 
             <StackLayout
@@ -26,7 +26,7 @@
                     Text="Roll name"
                     Padding="20,20,0,20"
                     FontAttributes="Bold"
-                    TextColor="Black"
+                    TextColor="{StaticResource Light_MAX}"
                     FontSize="20"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Center"/>
@@ -37,7 +37,7 @@
                     Margin="20"
                     Placeholder="Roll name"
                     FontSize="20"
-                    TextColor="Black"
+                    TextColor="{StaticResource Dark_MAX}"
                     BackgroundColor="White"
                     ClearButtonVisibility="WhileEditing"
                     MaxLength="20"
@@ -46,6 +46,10 @@
             </StackLayout>
 
         </Frame>
+
+        <BoxView
+            HeightRequest="5"
+            BackgroundColor="{StaticResource Dark_MED}"/>
 
         <StackLayout
             Spacing="0"
@@ -56,7 +60,7 @@
                 Text="Parts"
                 Padding="0, 0, 20, 0"
                 FontAttributes="Bold"
-                TextColor="Black"
+                TextColor="{StaticResource Dark_MAX}"
                 FontSize="20"
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="Center"/>
@@ -65,7 +69,7 @@
                 Text="+"
                 FontSize="30"
                 Padding="0"
-                TextColor="Black"
+                TextColor="{StaticResource Dark_MAX}"
                 BackgroundColor="LimeGreen"
                 FontAttributes="Bold"
                 WidthRequest="48"
@@ -94,7 +98,7 @@
                         <DataTemplate x:DataType="models:Model_Roll_Part_Dice">
 
                             <Frame BackgroundColor="Transparent" Padding="0,0,0,20">
-                                <Frame BackgroundColor="LightGray" Padding="10">
+                                <Frame BackgroundColor="{StaticResource Dark_MED}" Padding="10">
 
                                     <StackLayout
                                         Padding="0"
@@ -103,7 +107,7 @@
                                         <Label
                                             FontSize="20"
                                             Text="{Binding Name}"
-                                            TextColor="Black"
+                                            TextColor="{StaticResource Light_MAX}"
                                             FontAttributes="Bold"/>
 
                                         <StackLayout
@@ -112,21 +116,21 @@
                                             <Label
                                                 FontSize="30"
                                                 Text="{Binding NumberOfDice}"
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Light_MAX}"
                                                 HorizontalOptions="EndAndExpand"
                                                 VerticalOptions="Center"/>
 
                                             <Label
                                                 FontSize="20"
                                                 Text="  d  "
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Light_MAX}"
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"/>
 
                                             <Label
                                                 FontSize="30"
                                                 Text="{Binding NumberOfDiceFaces}"
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Light_MAX}"
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"/>
 
@@ -134,7 +138,7 @@
                                                 Text="E"
                                                 FontSize="20"
                                                 Padding="0"
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Dark_MAX}"
                                                 BackgroundColor="Orange"
                                                 FontAttributes="Bold"
                                                 WidthRequest="48"
@@ -166,7 +170,7 @@
                         <DataTemplate x:DataType="models:Model_Roll_Part_Constant">
 
                             <Frame BackgroundColor="Transparent" Padding="0,0,0,20">
-                                <Frame BackgroundColor="LightGray" Padding="10">
+                                <Frame BackgroundColor="{StaticResource Dark_MED}" Padding="10">
 
                                     <StackLayout
                                         Padding="0"
@@ -175,7 +179,7 @@
                                         <Label
                                             FontSize="20"
                                             Text="{Binding Name}"
-                                            TextColor="Black"
+                                            TextColor="{StaticResource Light_MAX}"
                                             FontAttributes="Bold"/>
 
                                         <StackLayout
@@ -183,7 +187,7 @@
 
                                             <Label
                                                 FontSize="30"
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Light_MAX}"
                                                 HorizontalOptions="EndAndExpand">
 
                                                 <Label.Triggers>
@@ -200,14 +204,14 @@
                                             <Label
                                                 FontSize="30"
                                                 Text="{Binding Value}"
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Light_MAX}"
                                                 HorizontalOptions="Center"/>
 
                                             <Button
                                                 Text="E"
                                                 FontSize="20"
                                                 Padding="0"
-                                                TextColor="Black"
+                                                TextColor="{StaticResource Dark_MAX}"
                                                 BackgroundColor="Orange"
                                                 FontAttributes="Bold"
                                                 WidthRequest="48"
@@ -241,7 +245,7 @@
             IsVisible="{Binding Creating}"
             FontSize="20"
             Padding="0"
-            TextColor="Black"
+            TextColor="{StaticResource Dark_MAX}"
             BackgroundColor="LimeGreen"
             FontAttributes="Bold"
             HeightRequest="48"

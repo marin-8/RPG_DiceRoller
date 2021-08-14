@@ -15,12 +15,11 @@
 
         <ShellContent
             Title="Basic"
-            ContentTemplate="{DataTemplate Screens:Screen_CustomRolls}" />
-
+            ContentTemplate="{DataTemplate Screens:Screen_BasicRolls}" />
 
         <ShellContent
             Title="Advanced"
-            ContentTemplate="{DataTemplate Screens:Screen_CustomRolls}" />
+            ContentTemplate="{DataTemplate Screens:Screen_BasicRolls}" />
 
         <ShellContent
             Title="Custom"

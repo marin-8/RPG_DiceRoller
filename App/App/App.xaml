@@ -20,8 +20,6 @@
             <Color x:Key="Light_MED">#E0E0E0</Color>
             <Color x:Key="Light_MAX">#FFFFFF</Color>
 
-            <x:String x:Key="Icon_Basic">&#xf554;</x:String>
-
         </ResourceDictionary>
     </Application.Resources>
     

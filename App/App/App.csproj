@@ -21,16 +21,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Screens\Screen_ConstantPart.xaml.cs">
+    <Compile Update="Screens\Basic\Screen_BasicRolls.xaml.cs">
+      <DependentUpon>Screen_BasicRolls.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Screens\Custom\Rol\Parts\Screen_ConstantPart.xaml.cs">
       <DependentUpon>Screen_ConstantPart.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Screens\Screen_DicePart.xaml.cs">
+    <Compile Update="Screens\Custom\Rol\Parts\Screen_DicePart.xaml.cs">
       <DependentUpon>Screen_DicePart.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Screens\Screen_Rol.xaml.cs">
+    <Compile Update="Screens\Custom\Rol\Screen_Rol.xaml.cs">
       <DependentUpon>Screen_Rol.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Screens\Screen_CustomRolls.xaml.cs">
+    <Compile Update="Screens\Custom\Screen_CustomRolls.xaml.cs">
       <DependentUpon>Screen_CustomRolls.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -43,5 +46,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Screens\Advanced\" />
   </ItemGroup>
 </Project>

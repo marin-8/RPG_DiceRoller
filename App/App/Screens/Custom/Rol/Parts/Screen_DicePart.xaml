@@ -11,10 +11,10 @@
     <StackLayout
         Spacing="0"
         Padding="0"
-        BackgroundColor="White">
+        BackgroundColor="{StaticResource Medium_Medium}">
 
         <Frame
-            BackgroundColor="LightGray"
+            BackgroundColor="{StaticResource Medium_Dark}"
             Padding="0">
 
             <StackLayout
@@ -26,7 +26,7 @@
                     Text="Dice part name"
                     Padding="20,20,0,20"
                     FontAttributes="Bold"
-                    TextColor="Black"
+                    TextColor="{StaticResource Light_MAX}"
                     FontSize="20"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Center"/>
@@ -36,7 +36,7 @@
                     Margin="20"
                     Placeholder="Dice part name"
                     FontSize="20"
-                    TextColor="Black"
+                    TextColor="{StaticResource Dark_MAX}"
                     BackgroundColor="White"
                     ClearButtonVisibility="WhileEditing"
                     MaxLength="20"
@@ -46,13 +46,17 @@
 
         </Frame>
 
+        <BoxView
+            HeightRequest="5"
+            BackgroundColor="{StaticResource Dark_MED}"/>
+
         <Label
-                Text="Number of dice:"
-                Padding="20,20,20,20"
-                FontAttributes="Bold"
-                TextColor="Black"
-                FontSize="20"
-                HorizontalOptions="Start"/>
+            Text="Number of dice:"
+            Padding="20,20,20,20"
+            FontAttributes="Bold"
+            TextColor="{StaticResource Dark_MAX}"
+            FontSize="20"
+            HorizontalOptions="Start"/>
 
         <StackLayout
             Spacing="0"
@@ -62,7 +66,7 @@
             <Label
                 Text="{Binding DicePart.NumberOfDice}"
                 Padding="20,20,20,20"
-                TextColor="Black"
+                TextColor="{StaticResource Dark_MAX}"
                 FontSize="20"
                 HorizontalOptions="EndAndExpand"
                 VerticalTextAlignment="Center"/>
@@ -80,7 +84,7 @@
             Text="Number of dice faces:"
             Padding="20,20,0,20"
             FontAttributes="Bold"
-            TextColor="Black"
+            TextColor="{StaticResource Dark_MAX}"
             FontSize="20"
             HorizontalOptions="StartAndExpand"
             HorizontalTextAlignment="Start"
@@ -94,7 +98,7 @@
             <Label
                 Text="{Binding DicePart.NumberOfDiceFaces}"
                 Padding="0,20,20,20"
-                TextColor="Black"
+                TextColor="{StaticResource Dark_MAX}"
                 FontSize="20"
                 HorizontalOptions="EndAndExpand"
                 VerticalTextAlignment="Center"/>
@@ -113,7 +117,7 @@
             IsVisible="{Binding Creating}"
             FontSize="20"
             Padding="0"
-            TextColor="Black"
+            TextColor="{StaticResource Dark_MAX}"
             BackgroundColor="LimeGreen"
             FontAttributes="Bold"
             HeightRequest="48"
